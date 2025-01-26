@@ -1,0 +1,50 @@
+<div class="bg-primary main">
+  <div class="me-5 pt-3">
+    <h1 class="display-1 text-end me-5 text-light">To-Do App!</h1>
+    <p class="display-6 text-end me-5 text-light">Add New To-Do</p>
+    <input
+      class="form-control mx-auto search"
+      type="text"
+      placeholder="Enter New Task"
+      aria-label="Add Task"
+      [(ngModel)]="newTask"
+      (keyup.enter)="addTask()"
+    />
+    <div class="d-flex justify-content-end">
+      <button class="btn add btn-primary btn-lg my-5" (click)="addTask()">Add</button>
+    </div>
+  </div>
+</div>
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        @if (tasks.length === 0) {
+          <div class="text-center text-secondary fs-4">
+            Let's get some work done!
+          </div>
+        } @else {
+          <ul class="list-group">
+            @for (task of tasks; track task.id) {
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <input
+                  type="checkbox"
+                  [checked]="task.completed"
+                  (change)="toggleCompleted(task.id)"
+                  class="form-check-input me-3"
+                />
+                <span
+                  [class.text-decoration-line-through]="task.completed"
+                  class="flex-grow-1"
+                >
+                  {{ task.text }}
+                </span>
+                <button class="btn btn-danger btn" (click)="deleteTask(task.id)">
+                  Delete
+                </button>
+              </li>
+            }
+          </ul>
+        }
+      </div>
+    </div>
+  </div>

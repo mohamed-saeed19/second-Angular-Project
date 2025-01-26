@@ -1,0 +1,27 @@
+.main{
+  height: fit-content;
+}
+.add{
+  border: 1px solid white;
+}
+.search{
+  width: 90%;
+}
+.search::placeholder {
+  color: rgb(13, 110, 253);
+}
+.list-group-item {
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.text-decoration-line-through {
+  text-decoration: line-through;
+  color: #6c757d;
+}
+
+.empty-state {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-top: 20px;
+}
