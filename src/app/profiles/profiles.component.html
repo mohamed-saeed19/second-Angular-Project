@@ -1,0 +1,49 @@
+<h1 class="m-5">Users</h1>
+<nav class="my-5 bg-body-tertiary">
+  <div class="container-fluid">
+    <form class="d-flex" role="search">
+      <input
+        class="form-control mx-5"
+        type="search"
+        placeholder="Search by Email"
+        aria-label="Search"
+        [(ngModel)]="searchEmail"
+        name="searchEmail"
+      />
+      <button class="btn btn-success" (click)="filterUsers() " (click)="filterUsers()">Search</button>
+      @if (showResetButton) {
+        <button
+          class="btn btn-secondary ms-2"
+          type="button"
+          (click)="resetSearch()"
+        >
+          Reset
+        </button>
+      }
+    </form>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    @for (item of filteredItems; track item.id) {
+      <div class="col-md-3 mt-4">
+        <div class="card">
+          <img [src]="item.image" class="card-img-top" alt="..." />
+          @if (item.role == 'admin') {
+            <span class="w-75 mx-auto badge bg-danger">{{ item.role }}</span>
+          } @else if (item.role == 'user') {
+            <span class="w-75 mx-auto badge bg-success">{{ item.role }}</span>
+          } @else {
+            <span class="w-75 mx-auto badge bg-warning">{{ item.role }}</span>
+          }
+          <div class="text-center">
+            <p>{{ item.username }}</p>
+            <p>{{ item.email }}</p>
+            <p>{{ item.phone }}</p>
+            <p>{{ item.birthDate }}</p>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
